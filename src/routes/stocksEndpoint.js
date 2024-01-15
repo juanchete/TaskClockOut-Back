@@ -13,13 +13,13 @@ router.get('/:nombre/:fecha', async (req, res) => {
         return res.status(400).json({ error: 'Invalid input parameters' });
       }
 
-      // Construir la URL con los parámetros
+      // Build the URL with the params
       const apiUrl = `https://api.polygon.io/v1/open-close/${nombre}/${fecha}?adjusted=${adjusted}&apiKey=${process.env.API_KEY}`;
   
-      // Hacer una llamada a la API externa
+      // Call the URL to get the data
       const response = await axios.get(apiUrl);
   
-      // Responder con los datos de la API externa
+      // Send to the user the data from the API
       res.status(200).json({
         message: 'Successs',
         params: { nombre, fecha, adjusted },
@@ -63,7 +63,7 @@ router.get('/watchlist', async (req, res) => {
           })
         );
     
-        // Responder con los datos de la API externa
+        // Send to the user the data from the API
         res.status(200).json({
           message: 'Watchlist Success',
           params: { date, adjusted },
